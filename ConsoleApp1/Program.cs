@@ -1,66 +1,98 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ConsoleApp1
 {
-    internal class Program
+    class Program
     {
         static void Main(string[] args)
         {
-            // initialize variables - graded assignments 
-            /*
-            Student     Grade
-            Sophia      94.6  A
-            Nicolas     83.6  B
-            Zahirah     83.4  B
-
-            Jeong       95.4  A
-            */
             var currentAssignments = 5;
 
-            var sophia1 = 93;
-            var sophia2 = 87;
-            var sophia3 = 98;
-            var sophia4 = 95;
-            var sophia5 = 100;
+            int[] sophiaScores ={100, 98, 98, 98, 100};
 
-            var nicolas1 = 80;
-            var nicolas2 = 83;
-            var nicolas3 = 82;
-            var nicolas4 = 88;
-            var nicolas5 = 85;
+            int[] nicolasScores = {80, 83, 82, 88, 85 };
+            
+            int[] zahirahScores = { 84, 96, 73, 85, 79 };
 
-            var zahirah1 = 84;
-            var zahirah2 = 96;
-            var zahirah3 = 73;
-            var zahirah4 = 85;
-            var zahirah5 = 79;
+            int[] jeongScores = {90, 92, 98, 100, 97 };
 
-            var jeong1 = 90;
-            var jeong2 = 92;
-            var jeong3 = 98;
-            var jeong4 = 100;
-            var jeong5 = 97;
+            string[] studentNames = { "Sophia", "Nicolas", "Zahirah", "Jeong" };
+            int[] studentScores = new int[10];
+            string currentStudentLetterGrade;
 
-            //Calculating the sum marks for each student.
-            var sophiaSum = sophia1 + sophia2 + sophia3 + sophia4 + sophia5;
-            var nicolasSum = nicolas1 + nicolas2 + nicolas3 + nicolas4 + nicolas5;
-            var zahirahSum = zahirah1 + zahirah2 + zahirah3 + zahirah4 + zahirah5;
-            var jeongSum = jeong1 + jeong2 + jeong3 + jeong4 + jeong5;
+            Console.WriteLine($"\nName\t\tMarks\t\tAverage\t\tGrade \n\n");
 
-            //Calculating the Average marks for each student
-            var sophiaAverage = (decimal)sophiaSum / currentAssignments;
-            var nicolasAverage = (decimal)nicolasSum / currentAssignments;
-            var zahirahAverage = (decimal)zahirahSum / currentAssignments;
-            var jeongAverage = (decimal)jeongSum / currentAssignments;
+            foreach (string name in studentNames)
+            {
+                string currentStudent = name;
+                if (currentStudent == "Sophia")
+                    studentScores = sophiaScores;
 
-            // Using an If statement to determine the grade of each student.
-            // Lets's see if this works
+                else if(currentStudent == "Nicolas")
+                    studentScores = nicolasScores;
 
-            Console.WriteLine($" Name\t\tMarks  Average\t  Grade \n\nSophia:\t\t {sophiaSum}\t{sophiaAverage} \t\tA \nNicolas:\t {nicolasSum}\t{nicolasAverage} \t\tB \nZahirah:\t {zahirahSum}\t{zahirahAverage} \t\tB \nJeong:\t\t {jeongSum}\t{jeongAverage} \t\tA");
+                else if(currentStudent == "Zahirah")
+                    studentScores = zahirahScores;
+
+                else if(currentStudent == "Jeong")
+                    studentScores = jeongScores;
+                    
+               
+                
+                
+                
+                var sumAssignmentScores = 0;
+                   
+
+                    foreach (var score in studentScores)
+                    {
+
+                        sumAssignmentScores += score;
+                    }
+
+                    var studentAverage = (decimal)sumAssignmentScores / currentAssignments;
+                if (studentAverage > 97)
+                    currentStudentLetterGrade = "A+";
+                else if (studentAverage >= 93)
+                    currentStudentLetterGrade = "A";
+
+                else if (studentAverage >= 90)
+                    currentStudentLetterGrade = "A-";
+
+                else if (studentAverage >= 87)
+                    currentStudentLetterGrade = "B+";
+
+                else if (studentAverage >= 83)
+                    currentStudentLetterGrade = "B";
+
+                else if (studentAverage >= 80)
+                    currentStudentLetterGrade = "B-";
+
+                else if (studentAverage >= 77)
+                    currentStudentLetterGrade = "C+";
+
+                else if (studentAverage >= 73)
+                    currentStudentLetterGrade = "C";
+
+                else if (studentAverage >= 70)
+                    currentStudentLetterGrade = "C-";
+
+                else if (studentAverage >= 67)
+                    currentStudentLetterGrade = "D+";
+
+                else if (studentAverage >= 63)
+                    currentStudentLetterGrade = "D";
+
+                else if (studentAverage >= 60)
+                    currentStudentLetterGrade = "D-";
+
+                else
+                    currentStudentLetterGrade = "F";
+
+                Console.WriteLine($" {currentStudent}: \t{sumAssignmentScores}\t\t{studentAverage}\t\t{currentStudentLetterGrade}");
+                
+            }
+            
         }
     }
 }
