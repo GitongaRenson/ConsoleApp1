@@ -58,6 +58,7 @@ namespace ConsoleApp1
             var jeongAverage = (decimal)jeongSum / currentAssignments;
 
             // Using an If statement to determine the grade of each student.
+            // Lets's see if this works
 
             Console.WriteLine($" Name\t\tMarks  Average\t  Grade \n\nSophia:\t\t {sophiaSum}\t{sophiaAverage} \t\tA \nNicolas:\t {nicolasSum}\t{nicolasAverage} \t\tB \nZahirah:\t {zahirahSum}\t{zahirahAverage} \t\tB \nJeong:\t\t {jeongSum}\t{jeongAverage} \t\tA");
         }
