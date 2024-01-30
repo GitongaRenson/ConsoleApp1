@@ -37,7 +37,7 @@ namespace ConsoleApp1
 
             string currentStudentLetterGrade;
 
-            Console.WriteLine($"\n  Name\t\tMarks\t\tAverage\t\tGrade \n\n");
+            Console.WriteLine($"\n  Name\t\tExam Score\tExtra Credit\t     Overall Score     Grade \n\n");
 
             foreach (string name in studentNames)
             {
@@ -81,6 +81,9 @@ namespace ConsoleApp1
 
                 var sumAssignmentScores = 0;
                 int gradedAssignments = 0;
+                var examAverage = 0;
+                decimal extraCrediScores = 0;
+                var numberOfExtraCredits = studentScores.Length - currentAssignments;
 
                     foreach (var score in studentScores)
                     {
@@ -88,53 +91,57 @@ namespace ConsoleApp1
 
                         if (gradedAssignments <= currentAssignments)
                         sumAssignmentScores += score;
+                        //examAverage = sumAssignmentScores;
                         else
-                        sumAssignmentScores += score/10;
+                        extraCrediScores += score/(numberOfExtraCredits);
+
                         
                     }
 
-                    var studentAverage = (decimal)sumAssignmentScores / currentAssignments;
+                    var examScore = (decimal)sumAssignmentScores / currentAssignments;
+                var extraCreditValue = ((extraCrediScores/ currentAssignments)/10)* numberOfExtraCredits;
+                var overallGradeScore = examScore + extraCreditValue;
                 
-                if (studentAverage > 97)
+                if (examScore > 97)
                     currentStudentLetterGrade = "A+";
                 
-                else if (studentAverage >= 93)
+                else if (examScore >= 93)
                     currentStudentLetterGrade = "A";
 
-                else if (studentAverage >= 90)
+                else if (examScore >= 90)
                     currentStudentLetterGrade = "A-";
 
-                else if (studentAverage >= 87)
+                else if (examScore >= 87)
                     currentStudentLetterGrade = "B+";
 
-                else if (studentAverage >= 83)
+                else if (examScore >= 83)
                     currentStudentLetterGrade = "B";
 
-                else if (studentAverage >= 80)
+                else if (examScore >= 80)
                     currentStudentLetterGrade = "B-";
 
-                else if (studentAverage >= 77)
+                else if (examScore >= 77)
                     currentStudentLetterGrade = "C+";
 
-                else if (studentAverage >= 73)
+                else if (examScore >= 73)
                     currentStudentLetterGrade = "C";
 
-                else if (studentAverage >= 70)
+                else if (examScore >= 70)
                     currentStudentLetterGrade = "C-";
 
-                else if (studentAverage >= 67)
+                else if (examScore >= 67)
                     currentStudentLetterGrade = "D+";
 
-                else if (studentAverage >= 63)
+                else if (examScore >= 63)
                     currentStudentLetterGrade = "D";
 
-                else if (studentAverage >= 60)
+                else if (examScore >= 60)
                     currentStudentLetterGrade = "D-";
 
                 else
                     currentStudentLetterGrade = "F";
 
-                Console.WriteLine($" {currentStudent}:  \t{sumAssignmentScores}\t\t{studentAverage}\t\t{currentStudentLetterGrade}");
+                Console.WriteLine($" {currentStudent}:  \t {examScore}\t\t{extraCrediScores}({extraCreditValue}pts)\t\t{overallGradeScore}\t\t{currentStudentLetterGrade}");
                 
             }
             
